@@ -330,6 +330,7 @@ typedef struct {
     String base64Authorization;    ///< Base64 encoded Auth request
     String plainAuthorization;     ///< Base64 encoded Auth request
 
+    String userAgent;
     String extraHeaders;
 
     bool cHttpHeadersValid = false;    ///< non-websocket http header validity indicator

@@ -29,6 +29,7 @@ WebSocketsClient::WebSocketsClient() {
     _cbEvent             = NULL;
     _client.num          = 0;
     _client.cIsClient    = true;
+    _client.userAgent    = "";
     _client.extraHeaders = WEBSOCKETS_STRING("Origin: file://");
     _reconnectInterval   = 500;
     _port                = 0;
@@ -407,6 +408,14 @@ void WebSocketsClient::setAuthorization(const char * auth) {
 }
 
 /**
+ * set the User Agent for the http request
+ * @param userAgent const char * userAgent
+ */
+void WebSocketsClient::setUserAgent(const char * userAgent) {
+    _client.userAgent = userAgent;
+}
+
+/**
  * set extra headers for the http request;
  * separate headers by "\r\n"
  * @param extraHeaders const char * extraHeaders
@@ -650,12 +659,17 @@ void WebSocketsClient::sendHeader(WSclient_t * client) {
         handshake += WEBSOCKETS_STRING("Connection: keep-alive\r\n");
     }
 
+    if(client->userAgent.length() > 0) {
+        handshake += WEBSOCKETS_STRING("User-Agent: ");
+        handshake += client->userAgent + NEW_LINE;
+    } else {
+        handshake += WEBSOCKETS_STRING("User-Agent: arduino-WebSocket-Client\r\n");
+    }
+
     // add extra headers; by default this includes "Origin: file://"
     if(client->extraHeaders.length() > 0) {
         handshake += client->extraHeaders + NEW_LINE;
     }
-
-    handshake += WEBSOCKETS_STRING("User-Agent: arduino-WebSocket-Client\r\n");
 
     if(client->base64Authorization.length() > 0) {
         handshake += WEBSOCKETS_STRING("Authorization: Basic ");

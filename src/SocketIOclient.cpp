@@ -85,6 +85,10 @@ bool SocketIOclient::isConnected(void) {
     return WebSocketsClient::isConnected();
 }
 
+void SocketIOclient::setUserAgent(const char * userAgent) {
+    return WebSocketsClient::setUserAgent(userAgent);
+}
+
 void SocketIOclient::setExtraHeaders(const char * extraHeaders) {
     return WebSocketsClient::setExtraHeaders(extraHeaders);
 }

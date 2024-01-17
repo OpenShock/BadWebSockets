@@ -95,6 +95,7 @@ class WebSocketsClient : protected WebSockets {
     void setAuthorization(const char * user, const char * password);
     void setAuthorization(const char * auth);
 
+    void setUserAgent(const char * userAgent = NULL);
     void setExtraHeaders(const char * extraHeaders = NULL);
 
     void setReconnectInterval(unsigned long time);

@@ -77,6 +77,7 @@ class SocketIOclient : protected WebSocketsClient {
     bool send(socketIOmessageType_t type, const char * payload, size_t length = 0);
     bool send(socketIOmessageType_t type, String & payload);
 
+    void setUserAgent(const char * userAgent = NULL);
     void setExtraHeaders(const char * extraHeaders = NULL);
     void setReconnectInterval(unsigned long time);
 
