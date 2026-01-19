@@ -968,9 +968,13 @@ void WebSocketsClient::connectedCb() {
 
     _client.status = WSC_HEADER;
 
+// set Timeout for readBytesUntil and readStringUntil
 #if (WEBSOCKETS_NETWORK_TYPE != NETWORK_ESP8266_ASYNC)
-    // set Timeout for readBytesUntil and readStringUntil
+#if defined(NETWORK_SET_TIMEOUT_IN_SECONDS)
+    _client.tcp->setTimeout(WEBSOCKETS_TCP_TIMEOUT / 1000);
+#else
     _client.tcp->setTimeout(WEBSOCKETS_TCP_TIMEOUT);
+#endif
 #endif
 
 #if (WEBSOCKETS_NETWORK_TYPE == NETWORK_ESP8266) || (WEBSOCKETS_NETWORK_TYPE == NETWORK_ESP32) || (WEBSOCKETS_NETWORK_TYPE == NETWORK_RP2040)
