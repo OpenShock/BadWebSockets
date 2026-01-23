@@ -24,12 +24,12 @@
     "version": "2.7.4",
     "dependencies": [
         {
-            "name": "WiFi",
+            "name": "arduino-libraries/WiFi",
             "version": "1.0",
             "platforms": "espressif32"
         },
         {
-            "name": "WiFiClientSecure",
+            "name": "arduino-libraries/WiFiClientSecure",
             "version": "1.0",
             "platforms": "espressif32"
         }
