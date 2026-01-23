@@ -21,5 +21,17 @@
         "type": "git",
         "url": "https://github.com/Links2004/arduinoWebSockets.git"
     },
-    "version": "2.7.3"
+    "version": "2.7.4",
+    "dependencies": [
+        {
+            "name": "WiFi",
+            "version": "1.0",
+            "platforms": "espressif32"
+        },
+        {
+            "name": "WiFiClientSecure",
+            "version": "1.0",
+            "platforms": "espressif32"
+        }
+    ]
 }
